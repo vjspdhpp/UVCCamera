@@ -25,6 +25,8 @@ apply plugin: 'com.android.library'
 import org.apache.tools.ant.taskdefs.condition.Os
 
 android {
+	namespace "com.serenegiant.uvccamera"
+
 	compileSdkVersion versionCompiler
 	buildToolsVersion versionBuildTool
 

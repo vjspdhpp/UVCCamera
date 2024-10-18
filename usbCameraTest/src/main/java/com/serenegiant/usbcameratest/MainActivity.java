@@ -40,6 +40,7 @@ import com.serenegiant.usb.USBMonitor;
 import com.serenegiant.usb.USBMonitor.OnDeviceConnectListener;
 import com.serenegiant.usb.USBMonitor.UsbControlBlock;
 import com.serenegiant.usb.UVCCamera;
+import com.serenegiant.uvccamera.R;
 import com.serenegiant.widget.SimpleUVCCameraTextureView;
 
 import java.nio.ByteBuffer;
