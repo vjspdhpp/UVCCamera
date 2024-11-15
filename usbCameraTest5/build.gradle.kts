@@ -22,8 +22,10 @@
  */
 
 plugins {
-    id("com.android.application") version("8.6.0")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.application) apply (true)
+    alias(libs.plugins.kotlin.android) apply (true)
+    alias(libs.plugins.ksp)
+
 }
 
 android {
@@ -35,16 +37,16 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.serenegiant.usbcameratest5"
+        applicationId = "com.serenegiant.usbcameratest"
         minSdk = 14
         targetSdk = 34
     }
     buildTypes {
         release {
-            minifyEnabled  = false
+            isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -56,11 +58,11 @@ android {
 dependencies {
 //    implementation(fileTree(mapOf("dir" to buildDir, "include" to listOf("*.jar"))))
 
-    implementation("com.android.support:support-v4:27.1.1")
-    implementation("com.android.support:support-annotations:27.1.1")
+    implementation(libs.support.v4)
+    implementation(libs.support.annotations)
 
     implementation("com.serenegiant:common:2.12.4") {
-//        exclude(module = "support-v4")
+        exclude(module = "support-v4")
     }
     implementation(project(":libuvccamera"))
     implementation(project(":usbCameraCommon"))

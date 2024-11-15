@@ -27,7 +27,7 @@ plugins {
 }
 
 android {
-	namespace = "com.serenegiant.uvccamera"
+	namespace = "com.serenegiant.usbCameraCommon"
 
 	compileSdk = 34
 

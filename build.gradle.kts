@@ -1,8 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id("com.android.application") version("8.6.0") apply(false) // 或者适合你的版本
-    id("com.android.library") version("8.6.0") apply(false)
-    id("org.jetbrains.kotlin.android")version ("1.8.0") apply(false)  // 确保指定版本
+    alias(libs.plugins.application) apply (false)
+    alias(libs.plugins.library) apply (false)
+    alias(libs.plugins.kotlin.android) apply (false)
 }
 
 
@@ -16,8 +16,8 @@ buildscript {
         google()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:8.6.0")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0")  // 同样的版本
+        classpath(libs.gradle)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0")
     }
 }
 

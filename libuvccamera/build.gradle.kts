@@ -29,7 +29,7 @@ plugins {
 
 
 android {
-	namespace = "com.serenegiant.uvccamera"
+	namespace = "com.serenegiant.libuvccamera"
 
 	compileSdk = 34
 
