@@ -720,7 +720,7 @@ abstract class AbstractUVCCameraHandler extends Handler {
 	        }
 	        // load shutter sound from resource
 		    mSoundPool = new SoundPool(2, streamType, 0);
-		    mSoundId = mSoundPool.load(context, R.raw.camera_click, 1);
+//		    mSoundId = mSoundPool.load(context, R.raw.camera_click, 1);
 		}
 
 		@Override

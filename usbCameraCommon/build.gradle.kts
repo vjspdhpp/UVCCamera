@@ -21,14 +21,48 @@
  *  may have a different license, see the respective files.
  */
 
-include ':libuvccamera'
-include ':usbCameraCommon'
-include ':usbCameraTest'
-include ':usbCameraTest0'
-include ':usbCameraTest2'
-include ':usbCameraTest3'
-include ':usbCameraTest4'
-include ':usbCameraTest5'
-include ':usbCameraTest6'
-include ':usbCameraTest7'
-include ':usbCameraTest8'
+plugins {
+	id("com.android.library")
+	id("org.jetbrains.kotlin.android")
+}
+
+android {
+	namespace = "com.serenegiant.uvccamera"
+
+	compileSdk = 34
+
+	compileOptions {
+		sourceCompatibility = JavaVersion.VERSION_1_8
+		targetCompatibility = JavaVersion.VERSION_1_8
+	}
+
+	defaultConfig {
+		minSdk  = 14
+		targetSdk = 34
+	}
+	kotlinOptions {
+		jvmTarget = "1.8"
+	}
+
+	buildTypes {
+		release {
+			isMinifyEnabled = false
+			proguardFiles(
+				getDefaultProguardFile("proguard-android-optimize.txt"),
+				"proguard-rules.pro"
+			)
+		}
+	}
+}
+
+dependencies {
+	implementation(fileTree(mapOf("dir" to buildDir, "include" to listOf("*.jar"))))
+
+	implementation("com.android.support:support-v4:27.1.1")
+	implementation("com.android.support:support-annotations:27.1.1")
+
+	implementation("com.serenegiant:common:2.12.4") {
+		exclude(module = "support-v4")
+	}
+	implementation(project(":libuvccamera"))
+}

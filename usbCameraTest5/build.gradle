@@ -21,42 +21,47 @@
  *  may have a different license, see the respective files.
  */
 
-apply plugin: 'com.android.application'
+plugins {
+    id("com.android.application") version("8.6.0")
+    id("org.jetbrains.kotlin.android")
+}
 
 android {
-	compileSdkVersion versionCompiler
-	buildToolsVersion versionBuildTool
-	namespace "com.serenegiant.uvccamera"
-	compileOptions {
-		sourceCompatibility javaSourceCompatibility
-		targetCompatibility javaTargetCompatibility
-	}
-
-    defaultConfig {
-        applicationId "com.serenegiant.usbcameratest5"
-        minSdkVersion 18
-		targetSdkVersion versionTarget
-		versionCode 8
-		versionName "3.00"
+    namespace = "com.serenegiant.uvccamera"
+    compileSdk = 34
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    defaultConfig {
+        applicationId = "com.serenegiant.usbcameratest5"
+        minSdk = 14
+        targetSdk = 34
+    }
     buildTypes {
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+            minifyEnabled  = false
+            proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+            )
         }
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
 dependencies {
-	api fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation(fileTree(mapOf("dir" to buildDir, "include" to listOf("*.jar"))))
 
-	implementation "com.android.support:support-v4:${supportLibVersion}"
-	implementation "com.android.support:support-annotations:${supportLibVersion}"
+    implementation("com.android.support:support-v4:27.1.1")
+    implementation("com.android.support:support-annotations:27.1.1")
 
-	implementation("com.serenegiant:common:${commonLibVersion}") {
-		exclude module: 'support-v4'
-	}
-	implementation project(':libuvccamera')
-	implementation project(':usbCameraCommon')
+    implementation("com.serenegiant:common:2.12.4") {
+//        exclude(module = "support-v4")
+    }
+    implementation(project(":libuvccamera"))
+    implementation(project(":usbCameraCommon"))
 }

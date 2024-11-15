@@ -20,40 +20,27 @@
  *  Files in the libjpeg-turbo, libusb, libuvc, rapidjson folder
  *  may have a different license, see the respective files.
  */
-
-apply plugin: 'com.android.library'
-
-android {
-    compileSdkVersion versionCompiler
-   	buildToolsVersion versionBuildTool
-	namespace "com.serenegiant.uvccamera"
-
-   	compileOptions {
-   		sourceCompatibility javaSourceCompatibility
-   		targetCompatibility javaTargetCompatibility
-   	}
-
-    defaultConfig {
-        minSdkVersion 18
-        targetSdkVersion versionTarget
-
+pluginManagement {
+    repositories {
+        google()  // Android 插件位于 Google Maven 仓库
+        mavenCentral()
+        gradlePluginPortal()
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+    plugins {
+        id("com.android.application") version("8.6.0")  // 请确认版本号
+        id("com.android.library") version("8.6.0")  // 确保 Android Library 插件的版本正确
+        id("org.jetbrains.kotlin.android")version ("1.8.0")  // Kotlin 插件版本
     }
 }
 
-dependencies {
-	api fileTree(dir: 'libs', include: ['*.jar'])
-
-	implementation "com.android.support:support-v4:${supportLibVersion}"
-	implementation "com.android.support:support-annotations:${supportLibVersion}"
-
-	implementation("com.serenegiant:common:${commonLibVersion}") {
-   		exclude module: 'support-v4'
-   	}
-	implementation project(':libuvccamera')
-}
+include(":libuvccamera")
+include(":usbCameraCommon")
+//include ':usbCameraTest'
+//include ':usbCameraTest0'
+//include ':usbCameraTest2'
+//include ':usbCameraTest3'
+//include ':usbCameraTest4'
+include(":usbCameraTest5")
+//include ':usbCameraTest6'
+//include ':usbCameraTest7'
+//include ':usbCameraTest8'
